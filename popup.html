@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SEO Checklist</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+      color: #1a73e8;
+    }
+    .category {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .category-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #202124;
+      cursor: pointer;
+    }
+    .checklist {
+      margin-left: 15px;
+    }
+    .checklist-item {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .analyze-btn {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .analyze-btn:hover {
+      background-color: #1765cc;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>SEO Checklist</h1>
+  <button id="analyzeBtn" class="analyze-btn">Analyze Current Page</button>
+  
+  <div class="category">
+    <div class="category-title">1. Basic Setup</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Google Search Console</div>
+      <div class="checklist-item"><input type="checkbox"> Bing Webmaster Tools</div>
+      <div class="checklist-item"><input type="checkbox"> Google Analytics 4 (GA4)</div>
+      <div class="checklist-item"><input type="checkbox"> XML Sitemap Creation & Submission</div>
+      <div class="checklist-item"><input type="checkbox"> robots.txt Configuration</div>
+      <div class="checklist-item"><input type="checkbox"> SEO Plugin Installation (Yoast, Rank Math)</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">2. Keyword Research</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Primary & Secondary Keyword Identification</div>
+      <div class="checklist-item"><input type="checkbox"> Keyword Research Tools (Ahrefs, Semrush, etc.)</div>
+      <div class="checklist-item"><input type="checkbox"> Long-Tail Keyword Focus</div>
+      <div class="checklist-item"><input type="checkbox"> Search Intent Analysis</div>
+      <div class="checklist-item"><input type="checkbox"> Keyword Grouping by Topic/Page</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">3. On-Page SEO</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox" id="titleTag"> Title Tag Optimization</div>
+      <div class="checklist-item"><input type="checkbox" id="metaDesc"> Meta Description Writing</div>
+      <div class="checklist-item"><input type="checkbox" id="headings"> Heading Structure (H1-H6)</div>
+      <div class="checklist-item"><input type="checkbox"> Keyword Placement (First 100 Words)</div>
+      <div class="checklist-item"><input type="checkbox"> Internal Linking</div>
+      <div class="checklist-item"><input type="checkbox" id="altText"> Image Alt Text Optimization</div>
+      <div class="checklist-item"><input type="checkbox"> Schema Markup Implementation</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">4. Content Optimization</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Original, High-Quality Content</div>
+      <div class="checklist-item"><input type="checkbox"> User Intent Alignment</div>
+      <div class="checklist-item"><input type="checkbox"> Readability & Formatting</div>
+      <div class="checklist-item"><input type="checkbox"> Content Updates</div>
+      <div class="checklist-item"><input type="checkbox"> Semantic Keywords & Related Terms</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">5. Technical SEO</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Mobile Responsiveness</div>
+      <div class="checklist-item"><input type="checkbox"> Page Speed Optimization (Core Web Vitals)</div>
+      <div class="checklist-item"><input type="checkbox"> Broken Link & 404 Error Fixes</div>
+      <div class="checklist-item"><input type="checkbox"> Canonical Tag Usage</div>
+      <div class="checklist-item"><input type="checkbox"> HTTPS/SSL Implementation</div>
+      <div class="checklist-item"><input type="checkbox"> Crawlability & Indexability Checks</div>
+    </div>
+  </div>
+
+  <div class="category hidden" id="localSeo">
+    <div class="category-title">6. Local SEO (Optional)</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Google My Business Setup</div>
+      <div class="checklist-item"><input type="checkbox"> Location-Specific Keywords</div>
+      <div class="checklist-item"><input type="checkbox"> Local Directory Listings</div>
+      <div class="checklist-item"><input type="checkbox"> Customer Review Management</div>
+      <div class="checklist-item"><input type="checkbox"> Consistent NAP (Name, Address, Phone)</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">7. Off-Page SEO</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> High-Quality Backlink Building</div>
+      <div class="checklist-item"><input type="checkbox"> Guest Posting & Outreach</div>
+      <div class="checklist-item"><input type="checkbox"> Referring Domain Monitoring</div>
+      <div class="checklist-item"><input type="checkbox"> Social Media Sharing</div>
+      <div class="checklist-item"><input type="checkbox"> Avoid Spammy Link Tactics</div>
+    </div>
+  </div>
+
+  <div class="category">
+    <div class="category-title">8. Analytics & Tracking</div>
+    <div class="checklist">
+      <div class="checklist-item"><input type="checkbox"> Organic Traffic Monitoring</div>
+      <div class="checklist-item"><input type="checkbox"> Keyword Ranking Tracking</div>
+      <div class="checklist-item"><input type="checkbox"> Bounce Rate & Time on Site Analysis</div>
+      <div class="checklist-item"><input type="checkbox"> Conversion Rate Measurement</div>
+      <div class="checklist-item"><input type="checkbox"> SEO Performance Reporting</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
