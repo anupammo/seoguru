@@ -1,153 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SEO Checklist</title>
+  <title>SEO Vision | On-Page Analyzer</title>
   <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #e0e7ff;
+      --secondary: #3f37c9;
+      --accent: #f72585;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --error: #ef233c;
+      --dark: #2b2d42;
+      --light: #f8f9fa;
+      --gray: #adb5bd;
+      --border-radius: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      width: 400px;
-      padding: 15px;
-      font-family: Arial, sans-serif;
+      width: 420px;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      src: url('https://rsms.me/inter/font-files/Inter-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      src: url('https://rsms.me/inter/font-files/Inter-SemiBold.woff2') format('woff2');
+    }
+
+    .header {
+      padding: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header p {
       font-size: 14px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
     }
-    h1 {
-      font-size: 18px;
-      margin-top: 0;
-      color: #1a73e8;
+
+    .container {
+      padding: 20px;
     }
-    .category {
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 10px;
-    }
-    .category-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: #202124;
+
+    .analyze-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: var(--border-radius);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
       cursor: pointer;
-    }
-    .checklist {
-      margin-left: 15px;
-    }
-    .checklist-item {
-      margin-bottom: 5px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
       display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
     }
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-    .analyze-btn {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+
     .analyze-btn:hover {
-      background-color: #1765cc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(67, 97, 238, 0.2);
     }
+
+    .analyze-btn:active {
+      transform: translateY(0);
+    }
+
+    .analyze-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    #loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(67, 97, 238, 0.2);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .category {
+      background: white;
+      border-radius: var(--border-radius);
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .category:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .category-header {
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .category-title {
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .category-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 6px;
+    }
+
+    .category-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .category.open .category-arrow {
+      transform: rotate(180deg);
+    }
+
+    .checklist {
+      padding: 0 16px 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: var(--light);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .checklist-item:hover {
+      background: var(--primary-light);
+    }
+
+    .checklist-item label {
+      flex-grow: 1;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .status {
+      margin-left: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      min-width: 80px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .good {
+      background-color: rgba(76, 201, 240, 0.1);
+      color: var(--success);
+    }
+
+    .warning {
+      background-color: rgba(248, 150, 30, 0.1);
+      color: var(--warning);
+    }
+
+    .bad {
+      background-color: rgba(239, 35, 60, 0.1);
+      color: var(--error);
+    }
+
+    .score-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .score-value {
+      font-size: 42px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 10px 0;
+    }
+
+    .score-label {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 4px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
     .hidden {
       display: none;
+    }
+
+    .tooltip {
+      position: relative;
+    }
+
+    .tooltip:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 10;
+      margin-bottom: 8px;
+    }
+
+    .detailed-results {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .detailed-results h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .detailed-item {
+      margin-bottom: 10px;
+    }
+
+    .detailed-item strong {
+      color: var(--secondary);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 6px;
+      margin-bottom: 6px;
     }
   </style>
 </head>
 <body>
-  <h1>SEO Checklist</h1>
-  <button id="analyzeBtn" class="analyze-btn">Analyze Current Page</button>
-  
-  <div class="category">
-    <div class="category-title">1. Basic Setup</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Google Search Console</div>
-      <div class="checklist-item"><input type="checkbox"> Bing Webmaster Tools</div>
-      <div class="checklist-item"><input type="checkbox"> Google Analytics 4 (GA4)</div>
-      <div class="checklist-item"><input type="checkbox"> XML Sitemap Creation & Submission</div>
-      <div class="checklist-item"><input type="checkbox"> robots.txt Configuration</div>
-      <div class="checklist-item"><input type="checkbox"> SEO Plugin Installation (Yoast, Rank Math)</div>
-    </div>
+  <div class="header">
+    <h1>SEO Vision</h1>
+    <p>On-page optimization analyzer</p>
   </div>
 
-  <div class="category">
-    <div class="category-title">2. Keyword Research</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Primary & Secondary Keyword Identification</div>
-      <div class="checklist-item"><input type="checkbox"> Keyword Research Tools (Ahrefs, Semrush, etc.)</div>
-      <div class="checklist-item"><input type="checkbox"> Long-Tail Keyword Focus</div>
-      <div class="checklist-item"><input type="checkbox"> Search Intent Analysis</div>
-      <div class="checklist-item"><input type="checkbox"> Keyword Grouping by Topic/Page</div>
-    </div>
-  </div>
+  <div class="container">
+    <button id="analyzeBtn" class="analyze-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+      </svg>
+      Analyze Current Page
+    </button>
 
-  <div class="category">
-    <div class="category-title">3. On-Page SEO</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox" id="titleTag"> Title Tag Optimization</div>
-      <div class="checklist-item"><input type="checkbox" id="metaDesc"> Meta Description Writing</div>
-      <div class="checklist-item"><input type="checkbox" id="headings"> Heading Structure (H1-H6)</div>
-      <div class="checklist-item"><input type="checkbox"> Keyword Placement (First 100 Words)</div>
-      <div class="checklist-item"><input type="checkbox"> Internal Linking</div>
-      <div class="checklist-item"><input type="checkbox" id="altText"> Image Alt Text Optimization</div>
-      <div class="checklist-item"><input type="checkbox"> Schema Markup Implementation</div>
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      Scanning page structure...
     </div>
-  </div>
+    
+    <div id="resultsContainer" class="hidden">
+      <div class="score-card">
+        <div class="score-label">SEO SCORE</div>
+        <div class="score-value" id="seoScore">0%</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="scoreProgress"></div>
+        </div>
+        <div id="scoreFeedback">Initializing analysis...</div>
+      </div>
 
-  <div class="category">
-    <div class="category-title">4. Content Optimization</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Original, High-Quality Content</div>
-      <div class="checklist-item"><input type="checkbox"> User Intent Alignment</div>
-      <div class="checklist-item"><input type="checkbox"> Readability & Formatting</div>
-      <div class="checklist-item"><input type="checkbox"> Content Updates</div>
-      <div class="checklist-item"><input type="checkbox"> Semantic Keywords & Related Terms</div>
-    </div>
-  </div>
+      <div class="category open">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon">1</div>
+            Basic SEO Elements
+          </div>
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="checklist">
+          <div class="checklist-item tooltip" data-tooltip="Ideal length: 50-60 characters">
+            <label>Title Tag</label>
+            <span id="titleTagStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="Ideal length: 120-160 characters">
+            <label>Meta Description</label>
+            <span id="metaDescStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="Should have 1 H1 and multiple H2s">
+            <label>Heading Structure</label>
+            <span id="headingsStatus" class="status">-</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="category">
-    <div class="category-title">5. Technical SEO</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Mobile Responsiveness</div>
-      <div class="checklist-item"><input type="checkbox"> Page Speed Optimization (Core Web Vitals)</div>
-      <div class="checklist-item"><input type="checkbox"> Broken Link & 404 Error Fixes</div>
-      <div class="checklist-item"><input type="checkbox"> Canonical Tag Usage</div>
-      <div class="checklist-item"><input type="checkbox"> HTTPS/SSL Implementation</div>
-      <div class="checklist-item"><input type="checkbox"> Crawlability & Indexability Checks</div>
-    </div>
-  </div>
+      <div class="category">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon">2</div>
+            Content Quality
+          </div>
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="checklist">
+          <div class="checklist-item tooltip" data-tooltip="Aim for 500+ words for comprehensive content">
+            <label>Content Length</label>
+            <span id="wordCountStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="All images should have descriptive alt text">
+            <label>Image Alt Texts</label>
+            <span id="imageAltsStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="Internal links help with site structure">
+            <label>Internal Links</label>
+            <span id="internalLinksStatus" class="status">-</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="category hidden" id="localSeo">
-    <div class="category-title">6. Local SEO (Optional)</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Google My Business Setup</div>
-      <div class="checklist-item"><input type="checkbox"> Location-Specific Keywords</div>
-      <div class="checklist-item"><input type="checkbox"> Local Directory Listings</div>
-      <div class="checklist-item"><input type="checkbox"> Customer Review Management</div>
-      <div class="checklist-item"><input type="checkbox"> Consistent NAP (Name, Address, Phone)</div>
-    </div>
-  </div>
+      <div class="category">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon">3</div>
+            Technical Factors
+          </div>
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+        <div class="checklist">
+          <div class="checklist-item tooltip" data-tooltip="Essential for mobile responsiveness">
+            <label>Mobile Viewport</label>
+            <span id="viewportStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="Prevents duplicate content issues">
+            <label>Canonical Tag</label>
+            <span id="canonicalStatus" class="status">-</span>
+          </div>
+          <div class="checklist-item tooltip" data-tooltip="Helps search engines understand content">
+            <label>Schema Markup</label>
+            <span id="schemaStatus" class="status">-</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="category">
-    <div class="category-title">7. Off-Page SEO</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> High-Quality Backlink Building</div>
-      <div class="checklist-item"><input type="checkbox"> Guest Posting & Outreach</div>
-      <div class="checklist-item"><input type="checkbox"> Referring Domain Monitoring</div>
-      <div class="checklist-item"><input type="checkbox"> Social Media Sharing</div>
-      <div class="checklist-item"><input type="checkbox"> Avoid Spammy Link Tactics</div>
-    </div>
-  </div>
-
-  <div class="category">
-    <div class="category-title">8. Analytics & Tracking</div>
-    <div class="checklist">
-      <div class="checklist-item"><input type="checkbox"> Organic Traffic Monitoring</div>
-      <div class="checklist-item"><input type="checkbox"> Keyword Ranking Tracking</div>
-      <div class="checklist-item"><input type="checkbox"> Bounce Rate & Time on Site Analysis</div>
-      <div class="checklist-item"><input type="checkbox"> Conversion Rate Measurement</div>
-      <div class="checklist-item"><input type="checkbox"> SEO Performance Reporting</div>
+      <div class="detailed-results">
+        <h3>Detailed Analysis</h3>
+        <div id="detailedResults"></div>
+      </div>
     </div>
   </div>
 

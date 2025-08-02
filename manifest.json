@@ -2,8 +2,7 @@
   "manifest_version": 3,
   "name": "SEO Checklist",
   "version": "1.0",
-  "description": "Comprehensive on-page SEO checklist for any webpage",
-  "permissions": ["activeTab"],
+  "description": "Client-side on-page SEO analysis tool",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -16,5 +15,12 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }
