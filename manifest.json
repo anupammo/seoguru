@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "SEO Checklist",
   "version": "1.0",
-  "description": "Analyzes title tags, meta descriptions, headings, content quality, and technical SEO factors. Provides actionable insights with modern UI",
+  "description": "Real-time on-page SEO analysis with 2025 optimization metrics",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
