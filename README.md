@@ -1,6 +1,15 @@
-# SEO Vision – On-Page SEO Analyzer Chrome Extension
 
-SEO Vision is a modern, privacy-friendly Chrome extension that provides instant, client-side on-page SEO analysis for any website you visit. It gives you a clear, actionable checklist and visual feedback to help you optimize your pages for search engines—no server, no data collection, no permissions beyond what’s needed.
+# SEO Checklist – On-Page SEO Analyzer Chrome Extension
+
+SEO Checklist is a modern, privacy-friendly Chrome extension that provides instant, client-side on-page SEO analysis for any website you visit. It gives you a clear, actionable checklist and visual feedback to help you optimize your pages for search engines—no server, no data collection, no permissions beyond what’s needed.
+
+---
+
+## Install from Chrome Web Store
+
+[**Install SEO Checklist from the Chrome Web Store**](https://chromewebstore.google.com/detail/seo-checklist/jgigdhidhmgikfnccdnehcpgoggmagfh?hl=en-GB&authuser=0)
+
+---
 
 ---
 
@@ -27,12 +36,13 @@ SEO Vision is a modern, privacy-friendly Chrome extension that provides instant,
 
 ---
 
-## Installation
+
+## Manual Installation (Development)
 
 1. **Clone or Download this Repository**
 2. **Open Chrome and go to** `chrome://extensions/`
 3. **Enable "Developer mode"** (top right)
-4. **Click "Load unpacked"** and select the `seoguru` folder
+4. **Click "Load unpacked"** and select the extension folder (containing `manifest.json`)
 
 ---
 
@@ -45,9 +55,16 @@ SEO Vision is a modern, privacy-friendly Chrome extension that provides instant,
 
 ---
 
+
 ## Screenshots
 
-![SEO Vision Screenshot](screenshot.png)
+<p align="center">
+  <img src="screenshots/screenshot1.jpg" alt="SEO Checklist Screenshot 1" width="400" />
+  <img src="screenshots/screenshot2.jpg" alt="SEO Checklist Screenshot 2" width="400" />
+  <img src="screenshots/screenshot3.jpg" alt="SEO Checklist Screenshot 3" width="400" />
+  <img src="screenshots/screenshot4.jpg" alt="SEO Checklist Screenshot 4" width="400" />
+  <img src="screenshots/screenshot5.png" alt="SEO Checklist Screenshot 5" width="400" />
+</p>
 
 ---
 
@@ -57,6 +74,28 @@ SEO Vision is a modern, privacy-friendly Chrome extension that provides instant,
 - Injects a script into the active tab to fetch the page’s HTML.
 - Parses and analyzes the HTML in the popup—**no data is sent anywhere**.
 - Displays results in a modern, interactive UI.
+
+---
+
+## File & Folder Structure for Chrome Web Store Upload
+
+Only include the following files/folders in your upload ZIP:
+
+```
+SEO Checklist/
+│   LICENSE
+│   manifest.json
+│   popup.html
+│   popup.js
+│   README.md*
+│
+└───icons
+  icon16.png
+  icon48.png
+  icon128.png
+```
+
+Do **not** include `marketing/` or `screenshots/` folders in the upload ZIP. Upload screenshots and promo images separately in the Chrome Web Store dashboard.
 
 ---
 

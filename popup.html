@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>SEO Vision | On-Page Analyzer</title>
+  <title>SEO Checklist | On-Page Analyzer</title>
   <style>
     :root {
-      --primary: #4361ee;
+      --primary: #9900cc;
       --primary-light: #e0e7ff;
-      --secondary: #3f37c9;
+      --secondary: #bb00ee;
       --accent: #f72585;
-      --success: #4cc9f0;
+      --success: #11aa00;
       --warning: #f8961e;
       --error: #ef233c;
       --dark: #2b2d42;
@@ -141,7 +142,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .category {
@@ -181,9 +184,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--primary-light);
-      color: var(--primary);
-      border-radius: 6px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
     }
 
     .category-arrow {
@@ -340,27 +343,46 @@
       margin-right: 6px;
       margin-bottom: 6px;
     }
+
+    p.dev-cred {
+      text-align: center;
+      font-size: small;
+      margin-top: 15px;
+    }
+
+    p.dev-cred a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
+
 <body>
   <div class="header">
-    <h1>SEO Vision</h1>
-    <p>On-page optimization analyzer</p>
+    <h1>SEO Checklist</h1>
+    <p>On-page SEO Checklist analyzer for optimization</p>
   </div>
 
   <div class="container">
-    <button id="analyzeBtn" class="analyze-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-      </svg>
-      Analyze Current Page
-    </button>
-
     <div id="loading" class="hidden">
       <div class="spinner"></div>
       Scanning page structure...
     </div>
-    
+
+    <button id="analyzeBtn" class="analyze-btn">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+      </svg> -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+        viewBox="0 0 16 16">
+        <path
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+      </svg>
+      Analyze Current Page
+    </button>
+
     <div id="resultsContainer" class="hidden">
       <div class="score-card">
         <div class="score-label">SEO SCORE</div>
@@ -377,7 +399,8 @@
             <div class="category-icon">1</div>
             Basic SEO Elements
           </div>
-          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </div>
@@ -403,7 +426,8 @@
             <div class="category-icon">2</div>
             Content Quality
           </div>
-          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </div>
@@ -429,7 +453,8 @@
             <div class="category-icon">3</div>
             Technical Factors
           </div>
-          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="category-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </div>
@@ -454,8 +479,11 @@
         <div id="detailedResults"></div>
       </div>
     </div>
+
+    <p class="dev-cred">Developed by : <a href="https://anupammondal.in" target="_blank">Anupam Mondal</a></p>
   </div>
 
   <script src="popup.js"></script>
 </body>
+
 </html>
