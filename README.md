@@ -58,13 +58,11 @@ SEO Checklist is a modern, privacy-friendly Chrome extension that provides insta
 
 ## Screenshots
 
-<p align="center">
-  <img src="screenshots/screenshot1.jpg" alt="SEO Checklist Screenshot 1" width="400" />
-  <img src="screenshots/screenshot2.jpg" alt="SEO Checklist Screenshot 2" width="400" />
-  <img src="screenshots/screenshot3.jpg" alt="SEO Checklist Screenshot 3" width="400" />
-  <img src="screenshots/screenshot4.jpg" alt="SEO Checklist Screenshot 4" width="400" />
-  <img src="screenshots/screenshot5.png" alt="SEO Checklist Screenshot 5" width="400" />
-</p>
+![SEO Checklist Screenshot 1](screenshots/screenshot1.jpg)
+![SEO Checklist Screenshot 2](screenshots/screenshot2.jpg)
+![SEO Checklist Screenshot 3](screenshots/screenshot3.jpg)
+![SEO Checklist Screenshot 4](screenshots/screenshot4.jpg)
+![SEO Checklist Screenshot 5](screenshots/screenshot5.png)
 
 ---
 
@@ -160,4 +158,5 @@ MIT License
 
 - UI inspired by modern design aspects.
 - Built with [Chrome Extensions API](https://developer.chrome.com/docs/extensions/).
+
 - **Developer:** [Anupam Mondal](https://anupammondal.in)
