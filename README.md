@@ -160,4 +160,6 @@ MIT License
 
 - UI inspired by modern design aspects.
 - Built with [Chrome Extensions API](https://developer.chrome.com/docs/extensions/).
+
 - **Developer:** [Anupam Mondal](https://anupammondal.in)
+
