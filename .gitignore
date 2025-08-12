@@ -1,0 +1,4 @@
+# Ignore marketing and screenshots folders, and README.md
+/marketing/
+/screenshots/
+/README.md
