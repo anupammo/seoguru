@@ -5,14 +5,14 @@
   <title>SEO Checklist | On-Page Analyzer</title>
   <style>
     :root {
-      --primary: #9900cc;
+      --primary: #ff9933;
       --primary-light: #e0e7ff;
-      --secondary: #bb00ee;
+      --secondary: #ff9933ee;
       --accent: #f72585;
       --success: #11aa00;
       --warning: #f8961e;
       --error: #ef233c;
-      --dark: #2b2d42;
+      --dark: #06038D;
       --light: #f8f9fa;
       --gray: #adb5bd;
       --border-radius: 12px;
@@ -52,21 +52,32 @@
     .header {
       padding: 20px;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
+      color: var(--dark);
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
     }
 
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255);
+      border-radius: 50%;
+    }
+
     .header::after {
       content: '';
       position: absolute;
-      top: -50px;
-      right: -50px;
+      bottom: -80px;
+      right: -80px;
       width: 150px;
       height: 150px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(19, 136, 8, 0.9);
       border-radius: 50%;
     }
 
@@ -95,7 +106,7 @@
       border: none;
       border-radius: var(--border-radius);
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
+      color: var(--dark);
       font-weight: 600;
       font-size: 15px;
       cursor: pointer;
@@ -128,7 +139,7 @@
       justify-content: center;
       gap: 10px;
       padding: 20px;
-      color: var(--primary);
+      color: var(--dark);
       font-weight: 600;
     }
 
@@ -184,7 +195,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--primary);
+      background: var(--dark);
       color: white;
       border-radius: 50%;
     }
