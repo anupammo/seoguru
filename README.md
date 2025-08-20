@@ -11,8 +11,6 @@ SEO Checklist is a modern, privacy-friendly Chrome extension that provides insta
 
 ---
 
----
-
 ## Features
 
 - **No Permissions Needed Beyond Active Tab**: All analysis is performed client-side. No data leaves your browser.
@@ -146,5 +144,6 @@ MIT License
 - Built with [Chrome Extensions API](https://developer.chrome.com/docs/extensions/).
 
 - **Developer:** [Anupam Mondal](https://anupammondal.in)
+
 
 
