@@ -99,22 +99,6 @@ Do **not** include `marketing/` or `screenshots/` folders in the upload ZIP. Upl
 
 ---
 
-## Development
-
-### File Structure
-
-```
-seoguru/
-├── icons/
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
-├── popup.html
-├── popup.js
-├── manifest.json
-└── README.md
-```
-
 ### Key Files
 
 - **manifest.json** – Extension configuration and permissions
@@ -162,4 +146,5 @@ MIT License
 - Built with [Chrome Extensions API](https://developer.chrome.com/docs/extensions/).
 
 - **Developer:** [Anupam Mondal](https://anupammondal.in)
+
 
